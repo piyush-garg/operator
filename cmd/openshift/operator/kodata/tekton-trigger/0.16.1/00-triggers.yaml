@@ -1359,7 +1359,7 @@ spec:
       containers:
         - name: tekton-triggers-controller
           image: "gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.16.1@sha256:ef5f79dcc8c1962279b95857d34e27d44670990dfb71ac3c481e277f376d9c78"
-          args: ["-logtostderr", "-stderrthreshold", "INFO", "-el-image", "gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.16.1@sha256:6e553c9067301509f6d4f71e5d173b42438741c82db524b0b00db994e92c87d0", "-el-port", "8080", "-el-security-context=true", "-el-readtimeout", "5", "-el-writetimeout", "40", "-el-idletimeout", "120", "-el-timeouthandler", "30", "-period-seconds", "10", "-failure-threshold", "1"]
+          args: ["-logtostderr", "-stderrthreshold", "INFO", "-el-image", "gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.16.1@sha256:6e553c9067301509f6d4f71e5d173b42438741c82db524b0b00db994e92c87d0", "-el-port", "8080", "-el-security-context=false", "-el-readtimeout", "5", "-el-writetimeout", "40", "-el-idletimeout", "120", "-el-timeouthandler", "30", "-period-seconds", "10", "-failure-threshold", "1"]
           env:
             - name: SYSTEM_NAMESPACE
               valueFrom:
