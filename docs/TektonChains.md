@@ -1,24 +1,26 @@
 <!--
 ---
-linkTitle: "TektonTrigger"
-weight: 3
+linkTitle: "TektonChains"
+weight: 9
 ---
 -->
-# Tekton Trigger
+# Tekton Chains
 
-TektonTrigger custom resource allows user to install and manage [Tekton Trigger][trigger]. 
+TektonChains custom resource allows user to install and manage [Tekton Chains][chains]. 
 
 It is recommended to install the components through [TektonConfig](./TektonConfig.md).
 
-The TektonTrigger CR is as below:
+The TektonChains CR is as below:
 ```yaml
 apiVersion: operator.tekton.dev/v1alpha1
-kind: TektonTrigger
+kind: TektonChains
 metadata:
-  name: trigger
+  name: chains
 spec:
-  targetNamespace: tekton-pipelines
+  targetNamespace: tekton-chains
 ```
 You can install this component using [TektonConfig](./TektonConfig.md) by choosing appropriate `profile`.
 
-[trigger]:https://github.com/tektoncd/triggers
+Note: TektonChains will be installed in namespace `tekton-chains` on both Kubernetes and OpenShift. Support for any other namespace is not provided yet. 
+
+[chains]:https://github.com/tektoncd/chains
