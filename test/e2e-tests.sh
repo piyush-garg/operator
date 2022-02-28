@@ -35,6 +35,7 @@ header "Setting up environment"
 tektonconfig_ready_wait
 
 header "Running Go e2e tests"
+go_test_e2e -timeout=20m ./test/e2e/config ${KUBECONFIG_PARAM} || failed=1
 go_test_e2e -timeout=20m ./test/e2e/common ${KUBECONFIG_PARAM} || failed=1
 go_test_e2e -timeout=20m ./test/e2e/${TARGET} ${KUBECONFIG_PARAM} || failed=1
 
