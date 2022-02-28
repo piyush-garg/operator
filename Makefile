@@ -64,6 +64,8 @@ clean-manifest:
 ifeq ($(TARGET), openshift)
 	rm -rf ./cmd/$(TARGET)/operator/kodata/tekton-pipeline
 	rm -rf ./cmd/$(TARGET)/operator/kodata/tekton-trigger
+	rm -rf ./cmd/$(TARGET)/operator/kodata/tekton-chains
+	rm -rf ./cmd/$(TARGET)/operator/kodata/tekton-addon/pipelines-as-code
 else
 	rm -rf ./cmd/$(TARGET)/operator/kodata/tekton*
 endif
