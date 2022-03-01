@@ -24,18 +24,16 @@ import (
 	"reflect"
 
 	"github.com/tektoncd/operator/pkg/apis/operator/v1alpha1"
-
+	op "github.com/tektoncd/operator/pkg/client/clientset/versioned/typed/operator/v1alpha1"
+	operatorv1alpha1 "github.com/tektoncd/operator/pkg/client/clientset/versioned/typed/operator/v1alpha1"
 	"github.com/tektoncd/operator/pkg/reconciler/common"
 	apierrs "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"knative.dev/pkg/test/logging"
-
-	op "github.com/tektoncd/operator/pkg/client/clientset/versioned/typed/operator/v1alpha1"
-	operatorv1alpha1 "github.com/tektoncd/operator/pkg/client/clientset/versioned/typed/operator/v1alpha1"
 )
 
-const tektonChainsNamespace = "tekton-chains"
+//const tektonChainsNamespace = "tekton-chains"
 
 // CreateChainsCR creates a Tekton Chains CR in tekton-chains namespace
 func CreateChainsCR(ctx context.Context, instance v1alpha1.TektonComponent, client operatorv1alpha1.OperatorV1alpha1Interface) error {
@@ -68,7 +66,7 @@ func ensureTektonChainsExists(ctx context.Context, clients op.TektonChainsInterf
 					CommonSpec: v1alpha1.CommonSpec{
 						// TektonChains is installed in tekton-chains namespace
 						// and not with other components
-						TargetNamespace: tektonChainsNamespace,
+						TargetNamespace: config.Spec.TargetNamespace, //tektonChainsNamespace,
 					},
 					Config: config.Spec.Config,
 				},
@@ -82,12 +80,12 @@ func ensureTektonChainsExists(ctx context.Context, clients op.TektonChainsInterf
 	// if the chains spec is changed then update the instance
 	updated := false
 
-	// Chains is installed in tekton-chains namespace, we do not take the target namespace
+	/*// Chains is installed in tekton-chains namespace, we do not take the target namespace
 	// from TektonConfig
 	if tcCR.Spec.TargetNamespace != tektonChainsNamespace {
 		tcCR.Spec.TargetNamespace = tektonChainsNamespace
 		updated = true
-	}
+	}*/
 
 	if !reflect.DeepEqual(tcCR.Spec.Config, config.Spec.Config) {
 		tcCR.Spec.Config = config.Spec.Config
