@@ -1,8 +1,6 @@
 # Tekton Operator Releases
 
-## Release Frequency
-
-Tekton Operator follows the Tekton community [release policy][release-policy]
+## Releasator follows the Tekton community [release policy][release-policy]
 as follows:
 
 - Versions are numbered according to semantic versioning: `vX.Y.Z`
